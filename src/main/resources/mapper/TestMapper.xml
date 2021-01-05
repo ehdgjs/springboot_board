@@ -3,10 +3,15 @@
  
 <mapper namespace="com.ehdgjs.board.domain.BoardRepository">
  
+    <select id="searchBoard" resultType="com.ehdgjs.board.web.board.Dto.BoardDto">
+        SELECT *
+        FROM BOARD
+    </select>
+
     <insert id="setBoard" parameterType="com.ehdgjs.board.web.board.Dto.BoardCreateDto">
-        <selectKey keyProperty="id" resultType="int">
-            SELECT auto_increase.nextval FROM dual
-        </selectKey>
+        <!-- <selectKey keyProperty="id" resultType="int">
+            SELECT auto_increase.nextval FROM sys.dual
+        </selectKey> -->
         INSERT
         INTO BOARD(BOARD_UID, TITLE, WRITER, CREATE_TIME, CONTENT)
         VALUES(auto_increase.nextval, #{TITLE}, #{WRITER}, #{CREATE_TIME}, #{CONTENT})
