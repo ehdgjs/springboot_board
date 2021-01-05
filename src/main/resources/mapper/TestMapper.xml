@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="com.ehdgjs.board.domain.BoardRepository">
+ 
+    <insert id="setBoard" parameterType="com.ehdgjs.board.web.board.Dto.BoardCreateDto">
+        <selectKey keyProperty="id" resultType="int">
+            SELECT auto_increase.nextval FROM dual
+        </selectKey>
+        INSERT
+        INTO BOARD(BOARD_UID, TITLE, WRITER, CREATE_TIME, CONTENT)
+        VALUES(auto_increase.nextval, #{TITLE}, #{WRITER}, #{CREATE_TIME}, #{CONTENT})
+    </insert>
+ 
+</mapper>
