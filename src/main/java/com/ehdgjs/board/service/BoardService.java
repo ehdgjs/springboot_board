@@ -5,6 +5,7 @@ import java.util.List;
 import com.ehdgjs.board.domain.BoardRepository;
 import com.ehdgjs.board.web.board.Dto.BoardCreateDto;
 import com.ehdgjs.board.web.board.Dto.BoardDto;
+import com.ehdgjs.board.web.board.Dto.BoardUpdateDto;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,14 @@ public class BoardService {
 
     public List<BoardDto> searchBoard(){
         return boardRepository.searchBoard();
+    }
+
+    public void updateBoard(BoardUpdateDto boardUpdateDto){
+        boardRepository.updateBoard(boardUpdateDto);
+    }
+
+    public void deleteBoard(Long board_uid){
+        boardRepository.deleteBoard(board_uid);
     }
 
 }

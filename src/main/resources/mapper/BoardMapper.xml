@@ -9,12 +9,21 @@
     </select>
 
     <insert id="setBoard" parameterType="com.ehdgjs.board.web.board.Dto.BoardCreateDto">
-        <!-- <selectKey keyProperty="id" resultType="int">
-            SELECT auto_increase.nextval FROM sys.dual
-        </selectKey> -->
         INSERT
         INTO BOARD(BOARD_UID, TITLE, WRITER, CREATE_TIME, CONTENT)
         VALUES(auto_increase.nextval, #{TITLE}, #{WRITER}, #{CREATE_TIME}, #{CONTENT})
     </insert>
+
+    <update id="updateBoard" parameterType="com.ehdgjs.board.web.board.Dto.BoardUpdateDto">
+        UPDATE BOARD
+        SET TITLE = #{TITLE}, WRITER = #{WRITER}, CONTENT = #{CONTENT}, MODIFY_TIME = #{MODIFY_TIME}
+        WHERE BOARD_UID = #{BOARD_UID}
+    </update>
  
+    <delete id="deleteBoard" parameterType="Long">
+        DELETE
+        FROM BOARD
+        WHERE BOARD_UID = #{BOARD_UID}
+    </delete>
+
 </mapper>
