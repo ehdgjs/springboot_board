@@ -30,19 +30,25 @@ public class BoardController {
         List<BoardDto> boardList = boardService.searchBoard();
 
         return boardList;
+        
     }
 
     //게시물 등록
     @PostMapping("/createBoard")
     public ResponseEntity<?> createBoard(BoardCreateDto boardCreateDto){
         ApiResponse result = null;
+
         try{
+
             result = new ApiResponse(true, "성공", boardService.createBoard(boardCreateDto));
             return ResponseEntity.ok().body(result);
+
         }catch(Exception e){
+
             e.printStackTrace();
             result = new ApiResponse(false, e.getMessage(), null);
             return ResponseEntity.badRequest().body(result);
+
         }
     }
 
@@ -50,13 +56,18 @@ public class BoardController {
     @PatchMapping("/updateBoard")
     public ResponseEntity<?> updateBoard(BoardUpdateDto boardUpdateDto){
         ApiResponse result = null;
+
         try {
+
             result = new ApiResponse(true, "성공", boardService.updateBoard(boardUpdateDto));
             return ResponseEntity.ok().body(result);
+
         } catch (Exception e) {
+
             e.printStackTrace();
             result = new ApiResponse(false, e.getMessage(), null);
             return ResponseEntity.badRequest().body(result);
+
         }
     }
 
@@ -64,13 +75,18 @@ public class BoardController {
     @DeleteMapping("/deleteBoard")
     public ResponseEntity<?> deleteBoard(Long board_uid){
         ApiResponse result = null;
+
         try {
+
             result = new ApiResponse(true, "성공", boardService.deleteBoard(board_uid));
             return ResponseEntity.ok().body(result);
+
         } catch (Exception e) {
+
             e.printStackTrace();
             result = new ApiResponse(false, e.getMessage(), null);
             return ResponseEntity.badRequest().body(result);
+
         }
     }
 }
