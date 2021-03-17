@@ -21,20 +21,27 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    public void createBoard(BoardCreateDto boardCreateDto){
-        boardRepository.setBoard(boardCreateDto);
-    }
-
+    @Transactional(readOnly = true)
     public List<BoardDto> searchBoard(){
         return boardRepository.searchBoard();
     }
 
-    public void updateBoard(BoardUpdateDto boardUpdateDto){
-        boardRepository.updateBoard(boardUpdateDto);
+    @Transactional(readOnly = false)
+    public BoardCreateDto createBoard(BoardCreateDto boardCreateDto){
+        boardRepository.setBoard(boardCreateDto);
+        return boardCreateDto;
     }
 
-    public void deleteBoard(Long board_uid){
+    @Transactional(readOnly = false)
+    public BoardUpdateDto updateBoard(BoardUpdateDto boardUpdateDto){
+        boardRepository.updateBoard(boardUpdateDto);
+        return boardUpdateDto;
+    }
+
+    @Transactional(readOnly = false)
+    public Long deleteBoard(Long board_uid){
         boardRepository.deleteBoard(board_uid);
+        return board_uid;
     }
 
 }
