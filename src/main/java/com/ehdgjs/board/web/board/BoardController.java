@@ -22,11 +22,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/board")
 public class BoardController {
+    
     private final BoardService boardService;
 
     //게시물 목록 조회
     @GetMapping("/searchBoard")
     public List<BoardDto> searchBoardList(){
+
+        //전체 게시글 조회 boardList에 저장
         List<BoardDto> boardList = boardService.searchBoard();
 
         return boardList;
