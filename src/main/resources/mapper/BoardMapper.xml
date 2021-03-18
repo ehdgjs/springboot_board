@@ -26,4 +26,9 @@
         WHERE BOARD_UID = #{BOARD_UID}
     </delete>
 
+    <delete id="deleteBoardAll">
+        DELETE
+        FROM BOARD
+    </delete>
+
 </mapper>

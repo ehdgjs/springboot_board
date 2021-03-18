@@ -18,4 +18,6 @@ public interface BoardRepository {
 
     void deleteBoard(Long BOARD_UID);
 
+    void deleteBoardAll();
+
 }
