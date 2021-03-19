@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
@@ -76,12 +77,12 @@ public class BoardController {
 
     //게시물 삭제
     @DeleteMapping("/deleteBoard")
-    public ResponseEntity<?> deleteBoard(Long board_uid){
+    public ResponseEntity<?> deleteBoard(@RequestParam(value = "uid") Long uid){
         ApiResponse result = null;
 
         try {
 
-            result = new ApiResponse(true, "성공", boardService.deleteBoard(board_uid));
+            result = new ApiResponse(true, "성공", boardService.deleteBoard(uid));
             return ResponseEntity.ok().body(result);
 
         } catch (Exception e) {

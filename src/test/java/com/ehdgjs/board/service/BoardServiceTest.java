@@ -29,13 +29,6 @@ public class BoardServiceTest {
     @Autowired
     private BoardService boardService;
 
-    @AfterAll
-    public void cleanup(){
-
-        boardRepository.deleteBoardAll();
-
-    }
-
     // 게시물 등록 테스트
     @Test
     public void createBoardTest(){
