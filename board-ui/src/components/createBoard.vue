@@ -1,6 +1,6 @@
 <template>
     <div class="text-center">
-        <h1>게시글 수정</h1>
+        <h1>게시글 작성</h1>
         <hr>
         <div>
             <div class="d-flex flex-row justify-content-end">
@@ -20,7 +20,7 @@
         </div>
         <hr>
         <div class="d-flex flex-row justify-content-around">
-            <button @click="updateBoard" class="btn btn-outline-dark btn-lg">작성</button>
+            <button @click="createBoard" class="btn btn-outline-dark btn-lg">작성</button>
             <router-link to="/" class="btn btn-outline-dark btn-lg">취소</router-link>
         </div>
     </div>
@@ -31,24 +31,22 @@
     import qs from 'qs';
 
     export default ({
-        name: 'updateBoard',
+        name: 'createBoard',
         data () {
             return {
-                uid: this.$route.query.id,
                 title: '',
                 writer: '',
                 content: ''
             }
         },
         methods: {
-            updateBoard: function () {
-                const URL = 'http://localhost:8080/board/updateBoard'
-                axios.patch(`${URL}`,
+            createBoard: function () {
+                const URL = 'http://localhost:8080/board/createBoard'
+                axios.post(`${URL}`,
                 qs.stringify({
-                    BOARD_UID: this.uid,
-                    TITLE: this.title,
-                    WRITER: this.writer,
-                    CONTENT: this.content
+                        TITLE: this.title,
+                        WRITER: this.writer,
+                        CONTENT: this.content
                 }))
                 window.location.href="/"
             }

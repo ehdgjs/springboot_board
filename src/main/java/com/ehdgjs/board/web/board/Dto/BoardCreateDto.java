@@ -9,10 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class BoardCreateDto {
-    private Long BOARD_UID;
     @NonNull private String TITLE;
     @NonNull private String WRITER;
     private String CREATE_TIME;
-    private String MODIFY_TIME;
     @NonNull private String CONTENT;
 }

@@ -41,7 +41,7 @@ public class BoardController {
     @PostMapping("/createBoard")
     public ResponseEntity<?> createBoard(BoardCreateDto boardCreateDto){
         ApiResponse result = null;
-
+        boardCreateDto.setCREATE_TIME("2021-03-19");
         try{
 
             result = new ApiResponse(true, "성공", boardService.createBoard(boardCreateDto));
@@ -60,6 +60,7 @@ public class BoardController {
     @PatchMapping("/updateBoard")
     public ResponseEntity<?> updateBoard(BoardUpdateDto boardUpdateDto){
         ApiResponse result = null;
+        boardUpdateDto.setMODIFY_TIME("2021-03-19");
 
         try {
 

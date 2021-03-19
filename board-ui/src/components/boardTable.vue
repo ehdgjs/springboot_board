@@ -1,6 +1,8 @@
 <template>
     <div id="board-table">
-        <h1 class="d-flex justify-content-center">게시판 입니다</h1>
+        <div class="d-flex justify-content-center">
+            <h1 class="">게시판</h1>
+        </div>
         <hr>
         <table class="table table-bordered table-dark table-hover">
             <thead>
@@ -11,7 +13,9 @@
                     <th>Content</th>
                     <th>Create_Time</th>
                     <th>Modify_Time</th>
-                    <th></th>
+                    <th class="text-center">
+                        <router-link to="/createBoard" class="btn btn-outline-light btn-sm">글 쓰기</router-link>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -23,10 +27,10 @@
                     <td>{{board.create_TIME}}</td>
                     <td>{{board.modify_TIME}}</td>
                     <td>
-                        <router-link to="/editBoard">
+                        <router-link class="btn btn-outline-light btn-sm" :to="{path: '/editBoard', query: {id: `${board.board_UID}`}}">
                             수정하기
                         </router-link>
-                        <a v-on:click="deleteBoard(`${board.board_UID}`)">삭제하기</a>
+                        <a class="btn btn-outline-light btn-sm" v-on:click="deleteBoard(`${board.board_UID}`)">삭제하기</a>
                     </td>
                 </tr>
             </tbody>
@@ -57,6 +61,7 @@
                 {
                     params: { uid: uid }
                 })
+                window.location.reload()
             }
         }
     })
